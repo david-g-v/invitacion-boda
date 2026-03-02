@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carol & David</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(rgba(255,248,244,0.9), rgba(255,248,244,0.9)),
+              url('fondo.jpg') center/cover no-repeat fixed;
+  color: #333;
+  text-align: center;
+}
+
+header {
+  padding: 80px 20px 40px 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8em;
+  margin: 0;
+}
+
+.sub {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.photo-container {
+  margin: 30px auto;
+  width: 85%;
+  max-width: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.photo-container img {
+  width: 100%;
+  display: block;
+}
+
+section {
+  padding: 40px 20px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  width: 70px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.time-box span {
+  display: block;
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: auto;
+}
+
+input, select, button {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+button {
+  background-color: #c9a66b;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+footer {
+  padding: 40px 20px;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Carol & David</h1>
+  <div class="sub">¡Nos casamos!</div>
+</header>
+
+<div class="photo-container">
+  <img src="nuestra-foto.jpg" alt="Carol y David">
+</div>
+
+<section>
+  <h2>30 de Agosto 2026</h2>
+  <p>El Mirador del Olivar, Madrid</p>
+
+  <div class="countdown">
+    <div class="time-box">
+      <span id="days">0</span>
+      Días
+    </div>
+    <div class="time-box">
+      <span id="hours">0</span>
+      Horas
+    </div>
+    <div class="time-box">
+      <span id="minutes">0</span>
+      Min
+    </div>
+    <div class="time-box">
+      <span id="seconds">0</span>
+      Seg
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Confirma tu asistencia</h2>
+
+  <form action="https://formspree.io/f/TU_CODIGO_AQUI" method="POST">
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    
+    <select name="asistencia" required>
+      <option value="">¿Asistirás?</option>
+      <option value="Si">Sí, allí estaré 💕</option>
+      <option value="No">No podré asistir 😢</option>
+    </select>
+
+    <button type="submit">Confirmar</button>
+  </form>
+</section>
+
+<footer>
+  Con amor, Carol & David ❤️
+</footer>
+
+<script>
+const weddingDate = new Date("August 30, 2026 18:00:00").getTime();
+
+setInterval(function() {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+
+}, 1000);
+</script>
+
+</body>
+</html>
