@@ -150,28 +150,31 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* motas de polvo luminoso */
+/* motas luminosas visibles y elegantes */
 
 .dust {
   position: fixed;
-  width: 2px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.15);
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
   border-radius: 50%;
   pointer-events: none;
-  animation: dustFall 8s linear forwards;
+  filter: blur(2px);
+  animation: dustFall 7s linear forwards;
+  opacity: 0.4;
 }
 
 @keyframes dustFall {
   0% {
-    transform: translateY(-10px);
-    opacity: 0.2;
+    transform: translateY(-20px) translateX(0);
+    opacity: 0.4;
   }
   100% {
-    transform: translateY(100vh);
+    transform: translateY(100vh) translateX(20px);
     opacity: 0;
   }
 }
+
 
 
 </style>
