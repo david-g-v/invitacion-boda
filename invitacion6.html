@@ -18,7 +18,7 @@ body{
   overflow-x:hidden;
 
   /* Fondo global */
-  background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.9)),
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
               url("fondo2.jpg") center/cover fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -300,7 +300,7 @@ window.addEventListener("scroll", () => {
     b.classList.add("bokeh");
     b.style.left = Math.random() * 100 + "vw";
     b.style.top = -60 + "px";
-    const size = 30 + Math.random() * 50;
+    const size = 15 + Math.random() * 50;
     b.style.width = size + "px";
     b.style.height = size + "px";
     b.style.animationDuration = 6 + Math.random() * 4 + "s";
