@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carol & David</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:#fffaf7;
+color:#333;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* secciones */
+
+.section{
+padding:70px 25px;
+max-width:520px;
+margin:auto;
+}
+
+/* portada */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.9)),
+url("fondo.jpg") center/cover;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:3em;
+margin:0;
+}
+
+.hero p{
+font-size:1.2em;
+margin-top:10px;
+}
+
+/* títulos */
+
+h2{
+font-family:'Playfair Display',serif;
+font-size:2em;
+margin-bottom:15px;
+}
+
+/* historia */
+
+.story{
+font-size:1.1em;
+line-height:1.7;
+}
+
+/* foto */
+
+.photo img{
+width:100%;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* galería */
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* contador */
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-top:20px;
+}
+
+.box{
+background:white;
+padding:15px;
+border-radius:12px;
+width:65px;
+box-shadow:0 5px 12px rgba(0,0,0,0.1);
+}
+
+.box span{
+display:block;
+font-size:1.5em;
+font-weight:bold;
+}
+
+/* botones */
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 20px;
+background:#c9a66b;
+color:white;
+border-radius:25px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* mapa */
+
+iframe{
+margin-top:25px;
+border-radius:15px;
+width:100%;
+height:250px;
+border:0;
+}
+
+/* animaciones */
+
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:all 1s ease;
+}
+
+.fade.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* pétalos */
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+}
+
+footer{
+padding:60px 20px;
+font-size:1.1em;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- PORTADA -->
+
+<div class="hero">
+
+<h1>Carol & David</h1>
+
+<p>30 Agosto 2026</p>
+
+<p>Desliza para descubrir nuestra historia ↓</p>
+
+</div>
+
+
+<!-- HISTORIA -->
+
+<div class="section fade">
+
+<h2>Nuestra historia</h2>
+
+<div class="photo">
+
+<img src="nuestra-foto.jpg">
+
+</div>
+
+<p class="story">
+
+Todo comenzó con una casualidad que terminó cambiando nuestras vidas.  
+Entre risas, viajes y momentos inolvidables, descubrimos que queríamos caminar juntos para siempre.
+
+</p>
+
+<p class="story">
+
+Después de tantos recuerdos compartidos, decidimos dar el paso más importante de nuestra vida.
+
+</p>
+
+</div>
+
+
+<!-- GALERIA -->
+
+<div class="section fade">
+
+<h2>Nuestros momentos</h2>
+
+<div class="gallery">
+
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+
+</div>
+
+</div>
+
+
+<!-- BODA -->
+
+<div class="section fade">
+
+<h2>El gran día</h2>
+
+<p>
+
+<strong>30 de Agosto de 2026</strong><br>
+13:00
+
+</p>
+
+<p>
+
+<strong>Mirador del Olivar</strong><br>
+Calle Dublín s/n<br>
+Campo de las Naciones<br>
+Madrid
+
+</p>
+
+<a class="btn"
+href="https://maps.google.com/?q=Mirador+del+Olivar+Madrid"
+target="_blank">
+
+Ver ubicación
+
+</a>
+
+</div>
+
+
+<!-- CONTADOR -->
+
+<div class="section fade">
+
+<h2>Cuenta atrás</h2>
+
+<div class="countdown">
+
+<div class="box">
+<span id="days">0</span>
+Días
+</div>
+
+<div class="box">
+<span id="hours">0</span>
+Horas
+</div>
+
+<div class="box">
+<span id="minutes">0</span>
+Min
+</div>
+
+<div class="box">
+<span id="seconds">0</span>
+Seg
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MAPA -->
+
+<div class="section fade">
+
+<h2>Cómo llegar</h2>
+
+<iframe
+src="https://maps.google.com/maps?q=Mirador%20del%20Olivar%20Madrid&t=&z=15&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</div>
+
+
+<!-- CONFIRMACION WHATSAPP -->
+
+<div class="section fade">
+
+<h2>Confirma tu asistencia</h2>
+
+<p>Puedes confirmarnos tu asistencia fácilmente por WhatsApp</p>
+
+<a class="btn"
+href="https://wa.me/TU_NUMERO?text=Hola%20Carol%20y%20David!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20del%2030%20de%20Agosto."
+target="_blank">
+
+Confirmar por WhatsApp
+
+</a>
+
+</div>
+
+
+<footer>
+
+Nos encantará compartir este momento contigo ❤️
+
+</footer>
+
+
+<script>
+
+/* contador animado */
+
+const weddingDate=new Date("August 30, 2026 13:00:00").getTime();
+
+function animateNumber(id,newValue){
+
+const element=document.getElementById(id);
+let current=parseInt(element.innerText);
+
+if(current===newValue) return;
+
+let step=current<newValue?1:-1;
+
+let interval=setInterval(()=>{
+
+current+=step;
+element.innerText=current;
+
+if(current===newValue){
+clearInterval(interval);
+}
+
+},20);
+
+}
+
+setInterval(()=>{
+
+const now=new Date().getTime();
+const distance=weddingDate-now;
+
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+
+animateNumber("days",days);
+animateNumber("hours",hours);
+animateNumber("minutes",minutes);
+animateNumber("seconds",seconds);
+
+},1000);
+
+
+/* animación scroll */
+
+const faders=document.querySelectorAll(".fade");
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+
+});
+
+faders.forEach(el=>observer.observe(el));
+
+
+/* pétalos al hacer scroll */
+
+window.addEventListener("scroll",()=>{
+
+for(let i=0;i<3;i++){
+
+let petal=document.createElement("div");
+
+petal.innerHTML="🌸";
+petal.style.position="fixed";
+petal.style.left=Math.random()*100+"vw";
+petal.style.top="-20px";
+petal.style.fontSize="20px";
+petal.style.pointerEvents="none";
+petal.style.animation="fall 6s linear";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},6000);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
