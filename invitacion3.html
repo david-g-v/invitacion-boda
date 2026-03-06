@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carol & David</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:linear-gradient(rgba(255,248,244,0.9),rgba(255,248,244,0.9)),
+url('fondo.jpg') center/cover no-repeat fixed;
+color:#333;
+text-align:center;
+overflow-x:hidden;
+}
+
+header{
+padding:80px 20px 40px;
+}
+
+h1{
+font-family:'Playfair Display',serif;
+font-size:2.8em;
+margin:0;
+}
+
+.sub{
+font-size:1.2em;
+margin-top:10px;
+}
+
+.photo-container{
+margin:30px auto;
+width:85%;
+max-width:350px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.photo-container img{
+width:100%;
+display:block;
+}
+
+section{
+padding:40px 20px;
+}
+
+.location{
+margin-top:10px;
+line-height:1.6;
+}
+
+.buttons{
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+align-items:center;
+}
+
+.btn{
+background:#c9a66b;
+color:white;
+padding:12px 18px;
+border-radius:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+.time-box{
+background:white;
+padding:15px;
+border-radius:15px;
+width:70px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.time-box span{
+display:block;
+font-size:1.6em;
+font-weight:bold;
+}
+
+iframe{
+margin-top:25px;
+border-radius:15px;
+border:0;
+width:100%;
+max-width:400px;
+height:250px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+max-width:400px;
+margin:auto;
+}
+
+input,select,textarea,button{
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+button{
+background:#c9a66b;
+color:white;
+border:none;
+font-weight:bold;
+}
+
+footer{
+padding:40px 20px;
+font-size:0.9em;
+opacity:0.7;
+}
+
+/* pétalos */
+
+.petal{
+position:fixed;
+top:-10px;
+font-size:18px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+
+.music{
+position:fixed;
+bottom:20px;
+right:20px;
+background:white;
+border-radius:50%;
+width:45px;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Carol & David</h1>
+<div class="sub">¡Nos casamos!</div>
+
+</header>
+
+<div class="photo-container">
+<img src="nuestra-foto.jpg">
+</div>
+
+<section>
+
+<h2>30 de Agosto de 2026</h2>
+<p><strong>13:00</strong></p>
+
+<div class="location">
+
+<strong>Mirador del Olivar</strong><br>
+Calle Dublín s/n<br>
+Campo de las Naciones<br>
+28042 - Madrid
+
+</div>
+
+<div class="buttons">
+
+<a class="btn"
+href="https://maps.google.com/?q=Mirador+del+Olivar+Madrid"
+target="_blank">
+
+Ver ubicación
+
+</a>
+
+<a class="btn"
+href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Carol+y+David&dates=20260830T130000/20260830T200000&location=Mirador+del+Olivar+Madrid">
+
+Añadir al calendario
+
+</a>
+
+</div>
+
+<div class="countdown">
+
+<div class="time-box">
+<span id="days">0</span>
+Días
+</div>
+
+<div class="time-box">
+<span id="hours">0</span>
+Horas
+</div>
+
+<div class="time-box">
+<span id="minutes">0</span>
+Min
+</div>
+
+<div class="time-box">
+<span id="seconds">0</span>
+Seg
+</div>
+
+</div>
+
+<iframe
+src="https://maps.google.com/maps?q=Mirador%20del%20Olivar%20Madrid&t=&z=15&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</section>
+
+<section>
+
+<h2>Confirma tu asistencia</h2>
+
+<form action="https://formspree.io/f/TU_CODIGO_FORMSPREE" method="POST">
+
+<input type="text" name="nombre" placeholder="Tu nombre" required>
+
+<select name="asistencia" required>
+<option value="">¿Asistirás?</option>
+<option value="Si">Sí asistiré 💕</option>
+<option value="No">No podré asistir 😢</option>
+</select>
+
+<input type="number" name="invitados" placeholder="Número de invitados">
+
+<textarea name="comentarios" placeholder="Alergias o comentarios"></textarea>
+
+<button type="submit">
+
+Confirmar asistencia
+
+</button>
+
+</form>
+
+</section>
+
+<footer>
+
+Con amor, Carol & David ❤️
+
+</footer>
+
+<audio id="music" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music" onclick="toggleMusic()">🎵</div>
+
+<script>
+
+/* contador */
+
+const weddingDate = new Date("August 30, 2026 13:00:00").getTime();
+
+setInterval(function(){
+
+const now = new Date().getTime();
+const distance = weddingDate - now;
+
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").innerHTML=days;
+document.getElementById("hours").innerHTML=hours;
+document.getElementById("minutes").innerHTML=minutes;
+document.getElementById("seconds").innerHTML=seconds;
+
+},1000);
+
+
+/* pétalos */
+
+setInterval(()=>{
+
+let petal=document.createElement("div");
+petal.classList.add("petal");
+petal.innerHTML="🌸";
+
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=5+Math.random()*5+"s";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>petal.remove(),10000);
+
+},500);
+
+
+/* música */
+
+function toggleMusic(){
+
+const music=document.getElementById("music");
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+
+}
+
+</script>
+
+</body>
+</html>
