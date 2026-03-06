@@ -150,19 +150,29 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* pétalos */
+/* motas de polvo luminoso */
 
-@keyframes fall{
-to{
-transform:translateY(110vh) rotate(360deg);
-opacity:0;
-}
+.dust {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: dustFall 8s linear forwards;
 }
 
-footer{
-padding:60px 20px;
-font-size:1.1em;
+@keyframes dustFall {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
 }
+
 
 </style>
 
@@ -397,31 +407,24 @@ entry.target.classList.add("visible");
 faders.forEach(el=>observer.observe(el));
 
 
-/* pétalos al hacer scroll */
+/* motas de polvo luminoso al hacer scroll */
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
+  for (let i = 0; i < 4; i++) {
+    const dust = document.createElement("div");
+    dust.classList.add("dust");
 
-for(let i=0;i<3;i++){
+    dust.style.left = Math.random() * 100 + "vw";
+    dust.style.top = "-10px";
+    dust.style.animationDuration = 6 + Math.random() * 4 + "s";
+    dust.style.opacity = 0.05 + Math.random() * 0.15;
 
-let petal=document.createElement("div");
+    document.body.appendChild(dust);
 
-petal.innerHTML="🌸";
-petal.style.position="fixed";
-petal.style.left=Math.random()*100+"vw";
-petal.style.top="-20px";
-petal.style.fontSize="20px";
-petal.style.pointerEvents="none";
-petal.style.animation="fall 6s linear";
-
-document.body.appendChild(petal);
-
-setTimeout(()=>{
-petal.remove();
-},6000);
-
-}
-
+    setTimeout(() => dust.remove(), 10000);
+  }
 });
+
 
 </script>
 
