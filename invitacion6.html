@@ -74,17 +74,22 @@ h2{
 }
 
 /* galería */
-.gallery{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:20px;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas por defecto */
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.gallery img{
-  width:100%;
-  border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+.gallery img.horizontal {
+  grid-column: 1 / -1; /* ocupa toda la fila */
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  height: auto;
 }
 
 /* contador */
@@ -187,7 +192,7 @@ footer{
 <div class="section fade">
 <h2>Nuestra historia</h2>
 <div class="photo">
-<img src="nuestra-foto.jpg">
+<img src="nuestra-foto.jpeg">
 </div>
 <p class="story">
 Todo comenzó con una casualidad que terminó cambiando nuestras vidas.  
@@ -202,10 +207,10 @@ Después de tantos recuerdos compartidos, decidimos dar el paso más importante 
 <div class="section fade">
 <h2>Nuestros momentos</h2>
 <div class="gallery">
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-<img src="foto4.jpg">
+  <img src="foto1.jpeg" class="horizontal">
+  <img src="foto2.jpeg" class="horizontal">
+  <img src="foto3.jpeg">
+  <img src="foto4.jpeg">
 </div>
 </div>
 
