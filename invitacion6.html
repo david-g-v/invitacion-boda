@@ -294,13 +294,18 @@ const observer=new IntersectionObserver(entries=>{
 faders.forEach(el=>observer.observe(el));
 
 // Destellos bokeh
+let lastScroll = 0;
 window.addEventListener("scroll", () => {
+  const now = Date.now();
+  if (now - lastScroll < 300) return; // 300ms entre burbujas
+  lastScroll = now;
+
   for (let i = 0; i < 1; i++) {
     const b = document.createElement("div");
     b.classList.add("bokeh");
     b.style.left = Math.random() * 100 + "vw";
     b.style.top = -60 + "px";
-    const size = 15 + Math.random() * 50;
+    const size = 30 + Math.random() * 50;
     b.style.width = size + "px";
     b.style.height = size + "px";
     b.style.animationDuration = 6 + Math.random() * 4 + "s";
