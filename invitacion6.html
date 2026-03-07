@@ -29,18 +29,17 @@ body::before {
   height: 100%;
   z-index: -1;
   
-  /* Imagen fija, sin movimiento, sin máscaras */
   background: url("fondo_vertical_parallax.png") no-repeat center top;
   background-size: cover;
-  background-attachment: fixed; 
+  background-attachment: scroll;
 }
 
 /* FIX para iOS (iPhone/iPad) */
-@supports (-webkit-touch-callout: none) {
+/* @supports (-webkit-touch-callout: none) {
   body::before{
     background-attachment: scroll;
   }
-}
+} */
 
 
 
