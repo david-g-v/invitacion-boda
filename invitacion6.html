@@ -274,17 +274,6 @@ Madrid
 <a class="btn" href="https://maps.google.com/?q=Mirador+del+Olivar+Madrid" target="_blank">Ver ubicación</a>
 </div>
 
-<!-- CONTADOR -->
-<div class="section fade">
-<h2>Cuenta atrás</h2>
-<div class="countdown">
-<div class="box"><span id="days">0</span>Días</div>
-<div class="box"><span id="hours">0</span>Horas</div>
-<div class="box"><span id="minutes">0</span>Min</div>
-<div class="box"><span id="seconds">0</span>Seg</div>
-</div>
-</div>
-
 <!-- MAPA -->
 <div class="section fade">
 <h2>Cómo llegar</h2>
@@ -316,6 +305,18 @@ Madrid
   </form>
 </div>
 
+<!-- CUENTA ATRÁS -->
+<div class="section fade">
+  <h2>Cuenta atrás para el gran día</h2>
+  <div class="countdown countdown-elegant">
+    <div class="box"><span id="days">0</span><br>Días</div>
+    <div class="box"><span id="hours">0</span><br>Horas</div>
+    <div class="box"><span id="minutes">0</span><br>Min</div>
+    <div class="box"><span id="seconds">0</span><br>Seg</div>
+  </div>
+</div>
+
+
 <style>
 /* Inputs estilizados para que encajen con la web */
 .form-input {
@@ -334,6 +335,54 @@ Madrid
 .form-input:focus {
   border-color: #c9a66b;
   box-shadow: 0 0 5px rgba(201, 166, 107, 0.5);
+}
+
+/* Cuenta atrás elegante */
+/* Cuenta atrás elegante con borde difuminado */
+/* Cuenta atrás flotante y difuminada */
+.countdown-elegant .box {
+  background: rgba(255, 255, 255, 0.15); /* casi transparente */
+  padding: 18px 20px;
+  border-radius: 20px;
+  min-width: 70px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #333;
+
+  /* Centrado del contenido */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Borde difuminado y sutil */
+  border: 1px solid rgba(201, 166, 107, 0.3);
+
+  /* Efecto difuminado sobre el fondo */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Sombra muy ligera para dar profundidad */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.countdown-elegant .box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.countdown-elegant .box span {
+  display: block;
+  font-size: 1.6em;
+  margin-bottom: 5px;
+  color: #c9a66b;
+  text-align: center;
+}
+
+.countdown-elegant .box br {
+  display: block;
 }
 </style>
 
