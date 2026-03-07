@@ -10,19 +10,21 @@
 <style>
 *{box-sizing:border-box}
 
-body{
-  margin:0;
-  font-family:'Montserrat',sans-serif;
-  color:#333;
-  text-align:center;
-  overflow-x:hidden;
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
 
-  /* Fondo global */
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
-              url("fondo2.jpg") center/cover fixed;
+  /* Fondo optimizado con la NUEVA imagen vertical y Parallax */
+  background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), /* Degradado sutil */
+              url("fondo_vertical_parallax.png") top center/cover; /* Usamos 'top' para asegurar que lo de arriba se vea al inicio */
   background-repeat: no-repeat;
-  background-size: cover;
+  background-attachment: fixed; /* Mantenemos el attachment fixed */
 }
+
+
 
 /* secciones */
 .section{
@@ -35,22 +37,47 @@ body{
 
 /* portada */
 .hero{
+  position:relative;
   height:100vh;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-end;
   align-items:center;
+  padding-bottom:120px;
+  overflow:hidden;
 }
 
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:3em;
-  margin:0;
+/* contenedor foto */
+
+.hero-photo{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:55vh;
+  overflow:hidden;
 }
 
-.hero p{
-  font-size:1.2em;
-  margin-top:10px;
+/* imagen */
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Añade estas líneas para el desvanecimiento */
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+/* forma orgánica inferior */
+
+.hero-photo svg{
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  width:100%;
+  height:120px;
+  fill:#00000033;
 }
 
 /* títulos */
@@ -183,9 +210,17 @@ footer{
 
 <!-- PORTADA -->
 <div class="hero">
+
+<div class="hero-photo">
+
+<img src="foto1.jpeg">
+
+</div>
+
 <h1>Carol & David</h1>
 <p>30 Agosto 2026</p>
 <p>Desliza para descubrir nuestra historia ↓</p>
+
 </div>
 
 <!-- HISTORIA -->
@@ -318,6 +353,15 @@ window.addEventListener("scroll", () => {
     document.body.appendChild(b);
     setTimeout(() => b.remove(), 9000);
   }
+});
+
+// Parallax del fondo
+
+// Parallax del fondo optimizado
+window.addEventListener("scroll", () => {
+  const scroll = window.scrollY;
+  // Usamos backgroundPositionY para mayor claridad
+  document.body.style.backgroundPositionY = (scroll * 0.2) + "px";
 });
 </script>
 
