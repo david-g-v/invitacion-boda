@@ -35,6 +35,13 @@ body::before {
   background-attachment: fixed; 
 }
 
+/* FIX para iOS (iPhone/iPad) */
+@supports (-webkit-touch-callout: none) {
+  body::before{
+    background-attachment: scroll;
+  }
+}
+
 /* secciones */
 .section{
   padding:70px 25px;
