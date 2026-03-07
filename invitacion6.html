@@ -317,6 +317,12 @@ Madrid
       <button type="button" class="btn" onclick="enviarWhatsApp('+34619139939')">Confirmar a Carol</button>
       <button type="button" class="btn" onclick="enviarWhatsApp('+34651638157')">Confirmar a David</button>
     </div>
+    <!-- Mensaje de regalo -->
+    <div class="gift-message">
+      🎁 Vuestra presencia es el mejor regalo. Pero si queréis ayudarnos con nuestra nueva aventura juntos, podéis hacerlo aquí:
+      <br>
+      <strong class="gift-account">ES60-0081-2713-5900-0148-8858</strong>
+    </div>
   </form>
 </div>
 
@@ -350,6 +356,31 @@ Madrid
 .form-input:focus {
   border-color: #b8935e;
   box-shadow: 0 0 5px rgba(201, 166, 107, 0.5);
+}
+
+.gift-message {
+  background: rgba(255, 255, 255, 0.15); /* fondo difuminado */
+  padding: 18px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 166, 107, 0.3); /* borde sutil dorado */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 450px;
+  margin: 15px auto 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.gift-message .gift-account {
+  display: block;        /* fuerza que esté en otra línea */
+  margin-top: 8px;       /* separa un poco del texto anterior */
+  font-weight: bold;     
+  color: #000000;        /* negro */
+  font-size: 1.1em;      /* ligeramente más grande si quieres */
 }
 
 /* Cuenta atrás elegante */
