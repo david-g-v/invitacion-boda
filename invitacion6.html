@@ -16,15 +16,24 @@ body {
   color: #333;
   text-align: center;
   overflow-x: hidden;
-
-  /* Fondo optimizado con la NUEVA imagen vertical y Parallax */
-  background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), /* Degradado sutil */
-              url("fondo_vertical_parallax.png") top center/cover; /* Usamos 'top' para asegurar que lo de arriba se vea al inicio */
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Mantenemos el attachment fixed */
+  position: relative;
+  background-color: #fdfdfd;
 }
 
-
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  
+  /* Imagen fija, sin movimiento, sin máscaras */
+  background: url("fondo_vertical_parallax.png") no-repeat center top;
+  background-size: cover;
+  background-attachment: fixed; 
+}
 
 /* secciones */
 .section{
@@ -355,14 +364,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Parallax del fondo
 
-// Parallax del fondo optimizado
-window.addEventListener("scroll", () => {
-  const scroll = window.scrollY;
-  // Usamos backgroundPositionY para mayor claridad
-  document.body.style.backgroundPositionY = (scroll * 0.2) + "px";
-});
 </script>
 
 </body>
