@@ -42,6 +42,8 @@ body::before {
   }
 }
 
+
+
 /* secciones */
 .section{
   padding:70px 25px;
@@ -87,6 +89,30 @@ body::before {
   font-size:0.9em;
   opacity:0.8;
   margin-top:10px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 360px) {
+  .hero-announcement {
+    font-size: 1.6em; /* un poco más pequeño */
+  }
+
+  .hero-names {
+    font-size: 2.2em; /* reducir tamaño de nombre */
+  }
+
+  .hero-date {
+    font-size: 1.2em;
+  }
+
+  .hero-scroll {
+    font-size: 0.8em;
+  }
+
+  /* Añadir un poco de margen inferior para que no choque con la foto */
+  .hero {
+    padding-bottom: 80px; 
+  }
 }
 
 /* contenedor foto */
