@@ -293,10 +293,73 @@ Madrid
 
 <!-- CONFIRMACION WHATSAPP -->
 <div class="section fade">
-<h2>Confirma tu asistencia</h2>
-<p>Puedes confirmarnos tu asistencia fácilmente por WhatsApp</p>
-<a class="btn" href="https://wa.me/TU_NUMERO?text=Hola%20Carol%20y%20David!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20del%2030%20de%20Agosto." target="_blank">Confirmar por WhatsApp</a>
+  <h2>Confirma tu asistencia</h2>
+  <p>Rellena tus datos y confirma por WhatsApp</p>
+
+  <form id="rsvpForm" style="margin-top:20px;">
+    <input type="text" id="nombre" placeholder="Nombre" required class="form-input">
+    
+    <select id="asistira" required class="form-input">
+      <option value="" disabled selected>¿Asistirás?</option>
+      <option value="Sí asistiré">Sí asistiré</option>
+      <option value="No podré asistir">No podré asistir</option>
+    </select>
+    
+    <input type="number" id="invitados" placeholder="Número de invitados" min="0" required class="form-input">
+    
+    <textarea id="comentarios" placeholder="Alergias o comentarios" class="form-input"></textarea>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:15px;">
+      <button type="button" class="btn" onclick="enviarWhatsApp('+34619139939')">Confirmar a Carol</button>
+      <button type="button" class="btn" onclick="enviarWhatsApp('+34651638157')">Confirmar a David</button>
+    </div>
+  </form>
 </div>
+
+<style>
+/* Inputs estilizados para que encajen con la web */
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #c9a66b;
+  box-shadow: 0 0 5px rgba(201, 166, 107, 0.5);
+}
+</style>
+
+<script>
+function enviarWhatsApp(numero) {
+  const nombre = document.getElementById('nombre').value.trim();
+  const asistira = document.getElementById('asistira').value;
+  const invitados = document.getElementById('invitados').value;
+  const comentarios = document.getElementById('comentarios').value.trim();
+
+  if (!nombre || !asistira || !invitados) {
+    alert("Por favor completa los campos obligatorios.");
+    return;
+  }
+
+  let mensaje = `¡Hola! Confirmo mi asistencia a la boda del 30 de Agosto.\n\n` +
+                `Nombre: ${nombre}\n` +
+                `Asistiré: ${asistira}\n` +
+                `Número de invitados: ${invitados}\n` +
+                (comentarios ? `Comentarios/Alergias: ${comentarios}` : '');
+
+  // Codificar mensaje para URL
+  const url = `https://wa.me/${numero.replace(/\D/g,'')}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+}
+</script>
 
 <footer>
 Nos encantará compartir este momento contigo ❤️
