@@ -445,18 +445,6 @@ Nos encantará compartir este momento contigo ❤️
 // Contador animado
 const weddingDate = new Date("August 30, 2026 13:00:00").getTime();
 
-function animateNumber(id,newValue){
-  const element=document.getElementById(id);
-  let current=parseInt(element.innerText);
-  if(current===newValue) return;
-  let step=current<newValue?1:-1;
-  let interval=setInterval(()=>{
-    current+=step;
-    element.innerText=current;
-    if(current===newValue) clearInterval(interval);
-  },20);
-}
-
 setInterval(()=>{
   const now=new Date().getTime();
   const distance=weddingDate-now;
@@ -464,10 +452,10 @@ setInterval(()=>{
   const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
   const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
   const seconds=Math.floor((distance%(1000*60))/1000);
-  animateNumber("days",days);
-  animateNumber("hours",hours);
-  animateNumber("minutes",minutes);
-  animateNumber("seconds",seconds);
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
 },1000);
 
 // Animación scroll secciones
