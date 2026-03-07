@@ -309,7 +309,7 @@ Madrid
       <option value="No podré asistir">No podré asistir 😢</option>
     </select>
     
-    <input type="number" id="invitados" placeholder="Número de invitados" min="0" required class="form-input">
+    <input type="number" id="acompañantes" placeholder="Número de acompañantes" min="0" required class="form-input">
     
     <textarea id="comentarios" placeholder="Alergias o comentarios" class="form-input"></textarea>
 
@@ -436,7 +436,7 @@ Madrid
 function enviarWhatsApp(numero) {
   const nombre = document.getElementById('nombre').value.trim();
   const asistira = document.getElementById('asistira').value;
-  const invitados = document.getElementById('invitados').value;
+  const invitados = document.getElementById('acompañantes').value;
   const comentarios = document.getElementById('comentarios').value.trim();
 
   if (!nombre || !asistira || !invitados) {
@@ -447,7 +447,7 @@ function enviarWhatsApp(numero) {
   let mensaje = `¡Hola! Confirmo mi asistencia a la boda del 30 de Agosto.\n\n` +
                 `Nombre: ${nombre}\n` +
                 `Asistiré: ${asistira}\n` +
-                `Número de invitados: ${invitados}\n` +
+                `Número de acompañantes: ${invitados}\n` +
                 (comentarios ? `Comentarios/Alergias: ${comentarios}` : '');
 
   // Codificar mensaje para URL
