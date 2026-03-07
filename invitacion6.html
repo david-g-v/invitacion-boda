@@ -56,6 +56,32 @@ body::before {
   overflow:hidden;
 }
 
+/* texto portada */
+.hero-announcement{
+  font-family:'Playfair Display', serif;
+  font-size:2em;
+  margin-bottom:5px;
+  color:#c9a66b;
+}
+
+.hero-names{
+  font-family:'Playfair Display', serif;
+  font-size:3em;
+  margin:5px 0;
+}
+
+.hero-date{
+  font-size:1.4em;
+  font-weight:500;
+  margin-top:5px;
+}
+
+.hero-scroll{
+  font-size:0.9em;
+  opacity:0.8;
+  margin-top:10px;
+}
+
 /* contenedor foto */
 
 .hero-photo{
@@ -220,15 +246,16 @@ footer{
 <!-- PORTADA -->
 <div class="hero">
 
-<div class="hero-photo">
+  <div class="hero-photo">
+    <img src="foto1_modif.jpeg">
+  </div>
 
-<img src="foto1_modif.jpeg">
+  <!-- Mensaje especial encima del nombre -->
 
-</div>
-
-<h1>Carol & David</h1>
-<p>30 Agosto 2026</p>
-<p>Desliza para descubrir nuestra historia ↓</p>
+<p class="hero-announcement">¡Nos casamos!</p>
+<h1 class="hero-names">Carol & David</h1>
+<p class="hero-date">30 Agosto 2026</p>
+<p class="hero-scroll">Desliza para descubrir nuestra historia ↓</p>
 
 </div>
 
