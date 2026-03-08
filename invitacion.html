@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carol & David</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+  background-color: #fdfdfd;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh; /* viewport dinámico, arregla móviles */
+  min-height: 100vh; /* fallback */
+  z-index: -1;
+  
+  background: url("fondo_vertical_parallax.png") no-repeat center top;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+/* FIX para iOS (iPhone/iPad) */
+@supports (-webkit-touch-callout: none) {
+  body::before{
+    background-attachment: scroll;
+  }
+}
+
+
+
+/* secciones */
+.section{
+  padding:70px 25px;
+  max-width:520px;
+  margin:auto;
+  position: relative; /* para que los bokeh queden detrás */
+  z-index: 1;
+}
+
+/* portada */
+.hero{
+  position:relative;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  padding-bottom:120px;
+  overflow:hidden;
+}
+
+/* texto portada */
+.hero-announcement{
+  font-family:'Playfair Display', serif;
+  font-size:2em;
+  margin-bottom:5px;
+  color:#b8935e;
+}
+
+.hero-names{
+  font-family:'Playfair Display', serif;
+  font-size:3em;
+  margin:5px 0;
+}
+
+.hero-date{
+  font-size:1.4em;
+  font-weight:500;
+  margin-top:5px;
+}
+
+.hero-scroll{
+  font-size:0.9em;
+  opacity:0.8;
+  margin-top:10px;
+}
+
+.hero-names {
+  font-size: clamp(2em, 8vw, 3em);
+}
+.hero-announcement {
+  font-size: clamp(1.5em, 5vw, 2em);
+}
+.hero-date {
+  font-size: clamp(1.1em, 4vw, 1.4em);
+}
+
+/* contenedor foto */
+
+.hero-photo{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:55vh;
+  overflow:hidden;
+}
+
+/* imagen */
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Añade estas líneas para el desvanecimiento */
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+/* forma orgánica inferior */
+
+.hero-photo svg{
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  width:100%;
+  height:120px;
+  fill:#00000033;
+}
+
+/* títulos */
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:2em;
+  margin-bottom:15px;
+}
+
+/* historia */
+.story{
+  font-size:1.1em;
+  line-height:1.7;
+}
+
+/* foto */
+.photo img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* contador */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:20px;
+}
+
+.box{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  width:65px;
+  box-shadow:0 5px 12px rgba(0,0,0,0.1);
+}
+
+.box span{
+  display:block;
+  font-size:1.5em;
+  font-weight:bold;
+}
+
+/* botones */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 20px;
+  background:#b8935e;
+  color:white;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* mapa */
+iframe{
+  margin-top:25px;
+  border-radius:15px;
+  width:100%;
+  height:250px;
+  border:0;
+}
+
+/* animaciones */
+.fade{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 1s ease;
+}
+
+.fade.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* destellos bokeh */
+.bokeh {
+  position: fixed;
+  z-index: 0;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(10px);
+  opacity: 0.5;
+  animation: bokehFall 6s linear forwards;
+}
+
+@keyframes bokehFall {
+  0% {
+    transform: translateY(-60px) scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100vh) scale(1.3);
+    opacity: 0;
+  }
+}
+
+footer{
+  padding:40px 10px;
+  font-size:1em;
+}
+</style>
+
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="hero">
+
+  <div class="hero-photo">
+    <img src="foto1_modif.jpeg">
+  </div>
+
+  <!-- Mensaje especial encima del nombre -->
+
+<p class="hero-announcement">¡Nos casamos!</p>
+<h1 class="hero-names">Carol & David</h1>
+<p class="hero-date">30 Agosto 2026</p>
+<p class="hero-scroll">Desliza para descubrir más ↓</p>
+
+</div>
+
+<!-- HISTORIA -->
+<div class="section fade">
+<h2>Nuestra historia</h2>
+<div class="photo">
+<img src="nuestra-foto.jpeg">
+</div>
+<p class="story">
+Dicen que las mejores historias empiezan cuando menos lo esperas. La nuestra empezó con un match y una conversación que enseguida se volvió especial...
+</p>
+<p class="story">
+Cuatro años después, seguimos eligiéndonos cada día. Ahora comienza uno de los capítulos más importantes de nuestras vidas y nos encantaría compartirlo contigo. 💕
+</p>
+</div>
+
+<!-- BODA -->
+<div class="section fade">
+<h2>El gran día</h2>
+<p>
+<strong>Domingo 30 de Agosto de 2026</strong><br>
+<strong>13:00 horas</strong>
+</p>
+<p>
+<strong>Mirador del Olivar</strong><br>
+Calle Dublín s/n<br>
+Campo de las Naciones<br>
+Madrid
+</p>
+<a class="btn" href="https://maps.google.com/?q=Mirador+del+Olivar+Madrid" target="_blank">Ver ubicación</a>
+</div>
+
+<!-- MAPA -->
+<!-- <div class="section fade">
+<h2>Cómo llegar</h2>
+<iframe src="https://maps.google.com/maps?q=Mirador%20del%20Olivar%20Madrid&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+</div> -->
+
+<!-- CONFIRMACION WHATSAPP -->
+<div class="section fade">
+  <h2>Confirma tu asistencia</h2>
+  <p>Rellena tus datos y confirma por WhatsApp</p>
+
+<form id="rsvpForm" style="margin-top:20px;">
+
+<select id="asistira" required class="form-input" onchange="toggleAsistencia()">
+<option value="" disabled selected>¿Asistirás?</option>
+<option value="Sí asistiré">Sí asistiré 💕</option>
+<option value="No podré asistir">No podré asistir 😢</option>
+</select>
+
+<select id="numAsistentes" class="form-input" style="display:none;" onchange="crearCamposNombres()">
+<option value="" disabled selected>Número de asistentes</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+
+<div id="camposNombres"></div>
+
+<textarea id="comentarios" placeholder="Alergias o comentarios" class="form-input"></textarea>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:15px;">
+<button type="button" class="btn" onclick="enviarWhatsApp('+34619139939')">Confirmar a Carol</button>
+<button type="button" class="btn" onclick="enviarWhatsApp('+34651638157')">Confirmar a David</button>
+</div>
+
+<div class="gift-message">
+🎁 Vuestra presencia es el mejor regalo. Pero si queréis ayudarnos con nuestra nueva aventura juntos, podéis hacerlo aquí:
+<br>
+<strong class="gift-account">ES60-0081-2713-5900-0148-8858</strong>
+</div>
+
+</form>
+</div>
+
+<!-- CUENTA ATRÁS -->
+<div class="section fade">
+  <h2>Cuenta atrás para el gran día</h2>
+  <div class="countdown countdown-elegant">
+    <div class="box"><span id="days">0</span><br>Días</div>
+    <div class="box"><span id="hours">0</span><br>Horas</div>
+    <div class="box"><span id="minutes">0</span><br>Min</div>
+    <div class="box"><span id="seconds">0</span><br>Seg</div>
+  </div>
+</div>
+
+
+<style>
+/* Inputs estilizados para que encajen con la web */
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #b8935e;
+  box-shadow: 0 0 5px rgba(201, 166, 107, 0.5);
+}
+
+.gift-message {
+  background: rgba(255, 255, 255, 0.15); /* fondo difuminado */
+  padding: 18px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 166, 107, 0.3); /* borde sutil dorado */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 450px;
+  margin: 15px auto 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.gift-message .gift-account {
+  display: block;        /* fuerza que esté en otra línea */
+  margin-top: 8px;       /* separa un poco del texto anterior */
+  font-weight: bold;     
+  color: #000000;        /* negro */
+  font-size: 1.1em;      /* ligeramente más grande si quieres */
+}
+
+/* Cuenta atrás elegante */
+/* Cuenta atrás elegante con borde difuminado */
+/* Cuenta atrás flotante y difuminada */
+.countdown-elegant .box {
+  background: rgba(255, 255, 255, 0.15); /* casi transparente */
+  padding: 18px 20px;
+  border-radius: 20px;
+  min-width: 70px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #333;
+
+  /* Centrado del contenido */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Borde difuminado y sutil */
+  border: 1px solid rgba(201, 166, 107, 0.3);
+
+  /* Efecto difuminado sobre el fondo */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Sombra muy ligera para dar profundidad */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.countdown-elegant .box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.countdown-elegant .box span {
+  display: block;
+  font-size: 1.6em;
+  margin-bottom: 5px;
+  color: #b8935e;
+  text-align: center;
+}
+
+.countdown-elegant .box br {
+  display: block;
+}
+</style>
+
+<script>
+function enviarWhatsApp(numero) {
+
+  const asistira = document.getElementById('asistira').value;
+  const comentarios = document.getElementById('comentarios').value.trim();
+  const numAsistentes = document.getElementById('numAsistentes').value;
+
+  if (!asistira) {
+    alert("Por favor indica si asistirás.");
+    return;
+  }
+
+  let mensaje = `¡Hola! Respuesta para la boda del 30 de Agosto:\n\n`;
+  mensaje += `Asistencia: ${asistira}\n`;
+
+  if (asistira === "Sí asistiré") {
+
+    if (!numAsistentes) {
+      alert("Indica el número de asistentes.");
+      return;
+    }
+
+    mensaje += `Número de asistentes: ${numAsistentes}\n`;
+
+    const nombres = document.querySelectorAll(".nombreAsistente");
+
+    mensaje += `Nombres:\n`;
+
+    nombres.forEach((n,i)=>{
+      mensaje += `- ${n.value}\n`;
+    });
+
+  }
+
+  if (comentarios){
+    mensaje += `\nComentarios/Alergias: ${comentarios}`;
+  }
+
+  const url = `https://wa.me/${numero.replace(/\D/g,'')}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+}
+
+function toggleAsistencia() {
+  const asistira = document.getElementById("asistira").value;
+  const asistentes = document.getElementById("numAsistentes");
+
+  if (asistira === "Sí asistiré") {
+    asistentes.style.display = "block";
+  } else {
+    asistentes.style.display = "none";
+    document.getElementById("camposNombres").innerHTML = "";
+  }
+}
+
+function crearCamposNombres() {
+  const num = document.getElementById("numAsistentes").value;
+  const contenedor = document.getElementById("camposNombres");
+
+  contenedor.innerHTML = "";
+
+  for (let i = 1; i <= num; i++) {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nombre del asistente " + i;
+    input.className = "form-input nombreAsistente";
+    contenedor.appendChild(input);
+  }
+}
+</script>
+
+<!-- <footer>
+Nos encantará compartir este momento contigo ❤️
+</footer> -->
+
+<script>
+// Contador animado
+const weddingDate = new Date("August 30, 2026 13:00:00").getTime();
+
+setInterval(()=>{
+  const now=new Date().getTime();
+  const distance=weddingDate-now;
+  const days=Math.floor(distance/(1000*60*60*24));
+  const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds=Math.floor((distance%(1000*60))/1000);
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
+},1000);
+
+// Animación scroll secciones
+const faders=document.querySelectorAll(".fade");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+});
+faders.forEach(el=>observer.observe(el));
+
+// Destellos bokeh
+let lastScroll = 0;
+window.addEventListener("scroll", () => {
+  const now = Date.now();
+  if (now - lastScroll < 300) return; // 300ms entre burbujas
+  lastScroll = now;
+
+  for (let i = 0; i < 1; i++) {
+    const b = document.createElement("div");
+    b.classList.add("bokeh");
+    b.style.left = Math.random() * 100 + "vw";
+    b.style.top = -60 + "px";
+    const size = 30 + Math.random() * 50;
+    b.style.width = size + "px";
+    b.style.height = size + "px";
+    b.style.animationDuration = 6 + Math.random() * 4 + "s";
+    b.style.opacity = 0.3 + Math.random() * 0.2;
+    document.body.appendChild(b);
+    setTimeout(() => b.remove(), 9000);
+  }
+});
+
+
+</script>
+
+</body>
+</html>
